@@ -15,18 +15,18 @@
     }
 
         input[type="submit"] {
-            background-color: 	#000000; /* Color naranja, puedes cambiarlo */
+            background-color: 	#000000; 
             color: white;
             padding: 10px 20px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
             font-size: 16px;
-            transition: background-color 0.3s ease; /* Efecto de transición en el color de fondo */
+            transition: background-color 0.3s ease; 
     }
 
         input[type="submit"]:hover {
-            background-color: #ffffff; /* Cambia el color al pasar el mouse sobre el botón */
+            background-color: #ffffff; 
     }
     
 
@@ -57,13 +57,13 @@
 
         .carousel-wrapper {
         display: flex;
-        width: 300%; /* Cada cuadro ocupa el 100%, entonces 3 cuadros serían 300% */
+        width: 300%; 
         transition: transform 0.5s ease-in-out;
         }
 
         .carousel-item {
-        width: 100vw; /* Ancho del 100% de la ventana */
-        height: 100vh; /* Altura del 100% de la ventana */
+        width: 100vw; 
+        height: 100vh; 
         box-sizing: border-box;
         display: flex;
         align-items: center;
@@ -71,14 +71,14 @@
         text-align: center;
         }
         .carousel-item h2 {
-        font-size: 20px; /* Ajusta el tamaño de la fuente según tus preferencias */
-        font-weight: 500; /* Puedes ajustar el peso de la fuente (por ejemplo, 400 para normal, 700 para negrita) */
+        font-size: 20px; 
+        font-weight: 500; 
         }
         .carousel-item h2 {
-        margin: 10px; /* Agrega margen alrededor del texto */
+        margin: 10px; 
         }
         .carousel-item h2 {
-        margin: 10px; /* Agrega margen alrededor del texto */
+        margin: 10px; 
 }
 
 
@@ -168,7 +168,7 @@
             
         }
 
-        /* Estilos específicos */
+        
         #hero h2 {
             color: #333;
         }
@@ -208,15 +208,19 @@
 
     </section>
 
+
     <div class="carousel-container">
         <div class="carousel-wrapper">  
         <div class="carousel-item" style="background-color: #82C0A4;">
             <div class="menu-container">
                 <section id="hero">
                     <div class="hero-content">
-                        <h2>Bienvenido a nuestra App</h2>
-                        <p>La mejor aplicación para cuidar tu alimentación</p>
-                        <a href="#download" class="btn">Descargar Ahora</a>
+                        <h1>Bienvenido a nuestra App</h1>
+             
+                        <p>La mejor aplicación para cuidar tu salud.</p>
+                        <p>Organizar tus tiempos.</p>
+                        <p>Y mejorar tu calidad de vida.</p>
+                        <a href="#download" class="btn">¿Quieres descargarla?</a>
                     </div>
                 </section>
             
@@ -228,14 +232,14 @@
         
         </div>
         <div class="carousel-item" style="background-color: #B2DFB9;">
-            <!-- Contenido del segundo cuadro -->
+         
             
             <form action="{% url 'login' %}" method="get">
                 <input type="submit" value="Iniciar Sesión">
             </form>
 
         </div>
-        <!-- Añade más elementos según sea necesario -->
+        
         </div>
 
         <div class="arrow arrow-left">&#9665;</div>
@@ -257,7 +261,7 @@
         });
 
         arrowRight.addEventListener('click', () => {
-        // Asumiendo que hay al menos 2 elementos en el carrusel
+        
         if (currentIndex < 1) {
             currentIndex++;
             updateCarousel();
@@ -273,16 +277,16 @@
 
     <section id="features">
         <div class="feature">
-            <h3>Fortaleza</h3>
+            <h3>Beneficios</h3>
             <p> Ofrece menús personalizados y diarios que se adaptan a las necesidades de salud individuales, considerando alergias, enfermedades, edad y preferencias alimentarias.</p>
         </div>
         <div class="feature">
-            <h3>Oportunidad</h3>
+            <h3>Futuro</h3>
             <p>Existe la posibilidad de expandir la base de datos de alimentos y recetas para proporcionar opciones más variadas y personalizadas.</p>
         </div>
         <div class="feature">
-            <h3>Debilidad</h3>
-            <p>La efectividad de las recomendaciones depende de la precisión de los datos proporcionados por los usuarios sobre sus condiciones de salud y preferencias alimentarias.</p>
+            <h3>Sobre Nosotros</h3>
+            <p>Somos parte del equipo MrFeast y queremos lograr que en tu vida se vea una mejoría con nuestra página web que cuenta con una IA entrenada por los mejores nutriólogos, la cual permitirá que puedas seleccionar lo que no te gusta, tus alergias, enfermedades o incluso problemas de peso tanto si eres mujer u hombre.  </p>
         </div>
     </section>  
 
@@ -299,7 +303,7 @@
     <footer id="contact">
   
         <ul>
-            <li>Email: info@miapp.com</li>
+            <li>Email: mrfeast@gmail.com</li>
             <li>Teléfono: +123456789</li>
         </ul>
     </footer>
