@@ -23,7 +23,7 @@ def login_view(request):
 
         if user is not None:
             login(request, user)
-            # Puedes redirigir a la página que desees después del inicio de sesión exitoso
+           
             return redirect('nombre_de_la_url')
 
     return render(request, 'login.html')
@@ -34,5 +34,15 @@ def home_view(request):
     if request.method == 'GET' and 'siguiente_btn' in request.GET:
         # Si se presionó el botón "Siguiente", redirige a la página deseada
         return redirect('nombre_de_la')
-    return render(request, 'home.html')  
+    return render(request, 'home.html')
+  
+def inicio_view(request):
+    # Puedes incluir la lógica que desees para la página de inicio
+    mensaje_bienvenida = "¡Bienvenido a nuestra aplicación!"
 
+    # Puedes pasar variables adicionales al contexto según tus necesidades
+    context = {
+        'mensaje_bienvenida': mensaje_bienvenida,
+    }
+
+    return render(request, 'inicio.html', context)
