@@ -24,7 +24,7 @@ def login_view(request):
         if user is not None:
             login(request, user)
            
-            return redirect('nombre_de_la_url')
+            return redirect('form')
 
     return render(request, 'login.html')
 
@@ -33,7 +33,7 @@ def home_view(request):
     # Lógica de la vista principal
     if request.method == 'GET' and 'siguiente_btn' in request.GET:
         # Si se presionó el botón "Siguiente", redirige a la página deseada
-        return redirect('nombre_de_la')
+        return redirect('portal')
     return render(request, 'home.html')
   
 def inicio_view(request):
