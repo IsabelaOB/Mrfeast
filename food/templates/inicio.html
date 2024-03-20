@@ -1,0 +1,309 @@
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Información sobre Mr. Feast</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap">
+        
+
+    <style>
+        form {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+    }
+
+        input[type="submit"] {
+            background-color: 	#000000; /* Color naranja, puedes cambiarlo */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease; /* Efecto de transición en el color de fondo */
+    }
+
+        input[type="submit"]:hover {
+            background-color: #ffffff; /* Cambia el color al pasar el mouse sobre el botón */
+    }
+    
+
+        body {
+            font-family: 'Dancing Script', cursive;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+
+        }
+        
+        
+        .cursiva {
+        font-style: italic;
+        }
+
+        .info-container {
+            padding: 20px;
+            background-color: 	#FEF8F8;
+            text-align: center;
+        }
+
+        .carousel-container {
+        width: 100%;
+        overflow: hidden;
+        }
+
+        .carousel-wrapper {
+        display: flex;
+        width: 300%; /* Cada cuadro ocupa el 100%, entonces 3 cuadros serían 300% */
+        transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel-item {
+        width: 100vw; /* Ancho del 100% de la ventana */
+        height: 100vh; /* Altura del 100% de la ventana */
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        }
+        .carousel-item h2 {
+        font-size: 20px; /* Ajusta el tamaño de la fuente según tus preferencias */
+        font-weight: 500; /* Puedes ajustar el peso de la fuente (por ejemplo, 400 para normal, 700 para negrita) */
+        }
+        .carousel-item h2 {
+        margin: 10px; /* Agrega margen alrededor del texto */
+        }
+        .carousel-item h2 {
+        margin: 10px; /* Agrega margen alrededor del texto */
+}
+
+
+        .arrow {
+        font-size: 24px;
+        cursor: pointer;
+        }
+
+        .arrow-left {
+        position: absolute;
+        top: 50%;
+        left: 10px;
+        transform: translateY(-50%);
+        }
+
+        .arrow-right {
+        position: absolute;
+        top: 50%;
+        right: 10px;
+        transform: translateY(-50%);
+        }
+        .menu-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            padding: 20px;
+        }
+        .menu {
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin: 20px;
+            padding: 20px;
+            width: 350px;
+            text-align: center;
+        }
+        .menu h2 {
+            margin-top: 0;
+            font-size: 24px;
+        }
+        .menu p {
+            font-size: 16px;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            color: #000000;
+            text-decoration: none;
+        }
+
+        section {
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        #hero {
+            background-color: #f2f2f2;
+        }
+
+        .hero-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .feature {
+            max-width: 300px;
+            margin: 0 auto 30px;
+          
+            
+        }
+
+        /* Estilos específicos */
+        #hero h2 {
+            color: #333;
+        }
+
+        #download {
+            background-color: #333;
+            color: #fff;
+        }
+
+        #download .download-links a {
+            display: inline-block;
+            background-color: #fff;
+            color: #333;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 0 10px;
+        }
+    </style>
+    </head>
+    <body>
+        
+        
+
+    <section class="info-container">
+        <h2 class="cursiva">MrFeastMenus</h2>
+        <header>
+            
+            <nav>
+                <ul>
+                    <li><a href="#features">Características</a></li>
+                    <li><a href="#download">Descargar</a></li>
+                    <li><a href="#contact">Contacto</a></li>
+                </ul>
+            </nav>
+        </header>
+
+    </section>
+
+    <div class="carousel-container">
+        <div class="carousel-wrapper">  
+        <div class="carousel-item" style="background-color: #82C0A4;">
+            <div class="menu-container">
+                <section id="hero">
+                    <div class="hero-content">
+                        <h2>Bienvenido a nuestra App</h2>
+                        <p>La mejor aplicación para cuidar tu alimentación</p>
+                        <a href="#download" class="btn">Descargar Ahora</a>
+                    </div>
+                </section>
+            
+                             
+        
+
+            </div>
+            
+        
+        </div>
+        <div class="carousel-item" style="background-color: #B2DFB9;">
+            <!-- Contenido del segundo cuadro -->
+            
+            <form action="{% url 'login' %}" method="get">
+                <input type="submit" value="Iniciar Sesión">
+            </form>
+
+        </div>
+        <!-- Añade más elementos según sea necesario -->
+        </div>
+
+        <div class="arrow arrow-left">&#9665;</div>
+        <div class="arrow arrow-right">&#9655;</div>
+    </div>
+
+    <script>
+        const carouselWrapper = document.querySelector('.carousel-wrapper');
+        const arrowLeft = document.querySelector('.arrow-left');
+        const arrowRight = document.querySelector('.arrow-right');
+        
+        let currentIndex = 0;
+
+        arrowLeft.addEventListener('click', () => {
+        if (currentIndex > 0) {
+            currentIndex--;
+            updateCarousel();
+        }
+        });
+
+        arrowRight.addEventListener('click', () => {
+        // Asumiendo que hay al menos 2 elementos en el carrusel
+        if (currentIndex < 1) {
+            currentIndex++;
+            updateCarousel();
+        }
+        });
+
+        function updateCarousel() {
+        const itemWidth = document.querySelector('.carousel-item').offsetWidth;
+        const newPosition = -currentIndex * itemWidth;
+        carouselWrapper.style.transform = `translateX(${newPosition}px)`;
+        }
+    </script>
+
+    <section id="features">
+        <div class="feature">
+            <h3>Fortaleza</h3>
+            <p> Ofrece menús personalizados y diarios que se adaptan a las necesidades de salud individuales, considerando alergias, enfermedades, edad y preferencias alimentarias.</p>
+        </div>
+        <div class="feature">
+            <h3>Oportunidad</h3>
+            <p>Existe la posibilidad de expandir la base de datos de alimentos y recetas para proporcionar opciones más variadas y personalizadas.</p>
+        </div>
+        <div class="feature">
+            <h3>Debilidad</h3>
+            <p>La efectividad de las recomendaciones depende de la precisión de los datos proporcionados por los usuarios sobre sus condiciones de salud y preferencias alimentarias.</p>
+        </div>
+    </section>  
+
+    <section id="download">
+        <h2>Descarga Nuestra Aplicación</h2>
+        <p>Disponible en:</p>
+        <div class="download-links">
+            <a href="#">App Store</a>
+            <a href="#">Google Play</a>
+        </div>
+    </section>
+
+
+    <footer id="contact">
+  
+        <ul>
+            <li>Email: info@miapp.com</li>
+            <li>Teléfono: +123456789</li>
+        </ul>
+    </footer>
+
+    </body>
+    </html>
+
