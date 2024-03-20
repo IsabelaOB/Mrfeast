@@ -3,6 +3,7 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 from food.models import UserProfile
 from django.http import HttpResponse
+from .models import Menu
 
     
 def login_view(request):
@@ -33,8 +34,14 @@ def home_view(request):
     # Lógica de la vista principal
     if request.method == 'GET' and 'siguiente_btn' in request.GET:
         # Si se presionó el botón "Siguiente", redirige a la página deseada
-        return redirect('portal')
+        menus = Menu.objects.all()
+        return portal_view(request)
     return render(request, 'home.html')
+
+def portal_view(request):
+    menus = Menu.objects.all()
+    return render(request, 'portal.html', {'menus':menus,})
+
   
 def inicio_view(request):
     # Puedes incluir la lógica que desees para la página de inicio
@@ -46,3 +53,6 @@ def inicio_view(request):
     }
 
     return render(request, 'inicio.html', context)
+
+def contacto_view(request):
+    return render(request, 'contacto.html')
