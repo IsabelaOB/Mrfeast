@@ -215,12 +215,15 @@
             <div class="menu-container">
                 <section id="hero">
                     <div class="hero-content">
-                        <h1>Bienvenido a nuestra App</h1>
-             
-                        <p>La mejor aplicación para cuidar tu salud.</p>
-                        <p>Organizar tus tiempos.</p>
-                        <p>Y mejorar tu calidad de vida.</p>
-                        <a href="#download" class="btn">¿Quieres descargarla?</a>
+                        <h1>Bienvenido a MrFeast</h1>             
+                        <p>La mejor aplicación web para cuidar tu salud.</p>
+                        <p>Organiza tus tiempos</p>
+                        <p>y mejora tu calidad de vida.</p>
+                        {% if user.is_authenticated %}
+                            <a href="{% url 'portal'%}" class="btn">Ver mis Menús</a>
+                        {% else %}
+                            <a href="{% url 'login'%}" class="btn">Log In</a>
+                        {% endif %}
                     </div>
                 </section>
             
@@ -233,10 +236,7 @@
         </div>
         <div class="carousel-item" style="background-color: #B2DFB9;">
          
-            
-            <form action="{% url 'login' %}" method="get">
-                <input type="submit" value="Iniciar Sesión">
-            </form>
+    
 
         </div>
         
