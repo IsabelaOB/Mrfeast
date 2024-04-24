@@ -56,3 +56,6 @@ def inicio_view(request):
 
 def contacto_view(request):
     return render(request, 'contacto.html')
+
+def generar_view(request):
+    return render(request, 'generar.html')
