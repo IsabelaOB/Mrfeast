@@ -14,6 +14,7 @@ urlpatterns = [
     path('form/', foodViews.home_view, name='form'),
     path('portal/', foodViews.portal_view, name='portal'),
     path('contacto/', foodViews.contacto_view, name='contacto'),
+    path('generar/', foodViews.generar_view, name='generar')
 ]
 
 
