@@ -1,3 +1,13 @@
 {% extends "base.html" %}
 
-
+{% block content %}
+<form action="">
+    <div class="mb-3">
+        <label for="generateMenu" class="form-label">
+            Generar un menú
+        </label>
+        <input type="text" class="form-control" name="generateMenu"/>
+    </div>
+    <button type="submit" class="btn btn-primary">Enviar</button>
+</form>
+{% endblock content %}
