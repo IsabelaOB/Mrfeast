@@ -4,7 +4,9 @@ from django.contrib.auth.models import User
 from food.models import UserProfile
 from django.http import HttpResponse
 from .models import Menu
-
+from pathlib import Path
+import hashlib
+import google.generativeai as genai
     
 def login_view(request):
     if request.method == 'POST':
@@ -39,8 +41,15 @@ def home_view(request):
     return render(request, 'home.html')
 
 def portal_view(request):
-    menus = Menu.objects.all()
+    busqueda = request.GET.get('busqueda')
+    if busqueda:
+        menus = Menu.objects.filter(title__icontains=busqueda)
+    else:
+        menus = Menu.objects.all()
+    #movies = Movie.objects.all()
     return render(request, 'portal.html', {'menus':menus,})
+    
+   
 
   
 def inicio_view(request):
@@ -58,4 +67,39 @@ def contacto_view(request):
     return render(request, 'contacto.html')
 
 def generar_view(request):
-    return render(request, 'generar.html')
+    genai.configure(api_key="AIzaSyB5DIgYTBVipSNGwLfAK-RR470u3cEFIlI")
+    generation_config = {
+    "temperature": 0.9,
+    "top_p": 0.95,
+    "top_k": 32,
+    "max_output_tokens": 1024,
+    }
+    safety_settings = [
+    {
+    "category": "HARM_CATEGORY_HARASSMENT",
+    "threshold": "BLOCK_MEDIUM_AND_ABOVE"
+    },
+     {
+    "category": "HARM_CATEGORY_HATE_SPEECH",
+    "threshold": "BLOCK_MEDIUM_AND_ABOVE"
+     },
+    {
+    "category": "HARM_CATEGORY_SEXUALLY_EXPLICIT",
+    "threshold": "BLOCK_MEDIUM_AND_ABOVE"
+    },
+    {
+     "category": "HARM_CATEGORY_DANGEROUS_CONTENT",
+      "threshold": "BLOCK_MEDIUM_AND_ABOVE"
+     },
+    ]
+
+    model = genai.GenerativeModel(model_name="gemini-1.5-pro-latest", generation_config=generation_config, safety_settings=safety_settings)
+    mensaje = ""
+    generateMenu = "Vas a actuar como un experto en recetas de todo tipo. Generame un menú con sus ingredientes, información nutricional y pasos de preparación a partir del siguiente mensaje: "
+    if request.GET.get('generateMenu'):
+        mensaje = request.GET.get('generateMenu')
+        generateMenu = generateMenu + mensaje
+    response = ""
+    if generateMenu:
+        response = model.generate_content(generateMenu).text
+    return render(request, 'generar.html', {'generateMenu':generateMenu, 'respuesta':response, 'mensaje':mensaje})
