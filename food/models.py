@@ -6,9 +6,9 @@ class UserProfile(models.Model):
 
 class Menu(models.Model):
     title = models.CharField(max_length=100)
-    descripcion = models.CharField(max_length=250)
+    descripcion = models.CharField(max_length=2000)
     imagen = models.ImageField(upload_to='menu/images/')
     
     def __str__(self):
-        return self.nombre
+        return self.title
 

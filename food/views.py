@@ -8,6 +8,7 @@ from pathlib import Path
 import hashlib
 import google.generativeai as genai
 import markdown2
+import time
     
 def login_view(request):
     if request.method == 'POST':
@@ -96,12 +97,20 @@ def generar_view(request):
 
     model = genai.GenerativeModel(model_name="gemini-1.5-pro-latest", generation_config=generation_config, safety_settings=safety_settings)
     mensaje = ""
-    generateMenu = "Vas a actuar como un experto en recetas de todo tipo. Generame un menú con sus ingredientes, información nutricional y pasos de preparación a partir del siguiente mensaje: "
+    generateMenu0 = "Vas a actuar como un experto en recetas de todo tipo. Debes preguntar por cosas como la cantidad de personas, alergias, tipo de situación, posibles ingredientes a disposición, entre otros.Generame un menú con sus ingredientes, información nutricional y pasos de preparación a partir del siguiente mensaje: "
+    generateMenu = ""
+    chat = model.start_chat(history=[])
     if request.GET.get('generateMenu'):
         mensaje = request.GET.get('generateMenu')
-        generateMenu = generateMenu + mensaje
+        generateMenu = "Vas a actuar como un experto en recetas de todo tipo.Generame un menú con sus ingredientes, información nutricional y pasos de preparación a partir del siguiente mensaje: " + mensaje
     response = ""
-    if generateMenu:
-        response = model.generate_content(generateMenu).text
-        response = markdown2.markdown(response)
+    if generateMenu != "":
+        retorno = chat.send_message(generateMenu).text
+        response = markdown2.markdown(retorno)
+        time.sleep(2)
+        titulo = chat.send_message("Ahora limítate a decirme el título del platillo basado en lo que me acabas de decir, sin utilizar letra en negrilla").text
+        Menu.objects.create(title = titulo, descripcion = retorno, imagen = "menu/images/vaca_marina.png")
+    else:
+        response = markdown2.markdown(chat.send_message(generateMenu0).text)
+        
     return render(request, 'generar.html', {'generateMenu':generateMenu, 'respuesta':response, 'mensaje':mensaje})
