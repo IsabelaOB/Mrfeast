@@ -14,7 +14,13 @@ urlpatterns = [
     path('form/', foodViews.home_view, name='form'),
     path('portal/', foodViews.portal_view, name='portal'),
     path('contacto/', foodViews.contacto_view, name='contacto'),
-    path('generar/', foodViews.generar_view, name='generar')
+    path('generar/', foodViews.generar_view, name='generar'),
+    
+    path('portal/<int:menu_id>', foodViews.detail, name='detail'),
+    path('portal/<int:menu_id>/create', foodViews.createreview, name='createreview'),
+    path('portal/review/<int:review_id>', foodViews.updatereview, name='updatereview'),
+    path('portal/review/<int:review_id>/delete', foodViews.deletereview, name='deletereview')
+    
 ]
 
 

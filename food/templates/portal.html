@@ -5,11 +5,12 @@
         {% for menu in menus %}
         <div v-for="menu in menus" class="col">
             <div class="card">
-                <img class="card-img-top" src="{{ menu.imagen.url}}"/>
-                <div class ="card-body">
-                    <h5 class="card-title fw-bold">{{ menu.title }}</h5>
-                    <p class="card-text">{{ menu.descripcion }} </p>
-                </div>
+                <a href="{% url 'detail' menu.id %}"> 
+                    <img class="card-img-top" src="{{ menu.imagen.url}}"/>
+                        <div class ="card-body">
+                            <h5 class="card-title fw-bold">{{ menu.title }}</h5>
+                        </div>
+                </a> 
             </div>
         </div>
         {% endfor %}
