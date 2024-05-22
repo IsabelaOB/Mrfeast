@@ -14,9 +14,9 @@
 </div>
 
 <div>
-    {% if mensaje != "" %}
-    <p>{{respuesta}}</p>
-    {% endif %}
+    
+    <p>{{respuesta|safe}}</p>
+    
 </div>
 
 {% endblock content %}

@@ -7,6 +7,7 @@ from .models import Menu
 from pathlib import Path
 import hashlib
 import google.generativeai as genai
+import markdown2
     
 def login_view(request):
     if request.method == 'POST':
@@ -72,7 +73,7 @@ def generar_view(request):
     "temperature": 0.9,
     "top_p": 0.95,
     "top_k": 32,
-    "max_output_tokens": 1024,
+    "max_output_tokens": 10240,
     }
     safety_settings = [
     {
@@ -102,4 +103,5 @@ def generar_view(request):
     response = ""
     if generateMenu:
         response = model.generate_content(generateMenu).text
+        response = markdown2.markdown(response)
     return render(request, 'generar.html', {'generateMenu':generateMenu, 'respuesta':response, 'mensaje':mensaje})
