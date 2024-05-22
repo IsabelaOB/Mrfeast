@@ -140,7 +140,7 @@ def createreview(request, menu_id):
             newReview.user = request.user 
             newReview.menu = menu 
             newReview.save() 
-            return redirect('detail', newReview.movie.id) 
+            return redirect('detail', newReview.menu.id) 
         except ValueError: 
             return render(request, 'createreview.html', {'form':ReviewForm(),'error':'bad data passed in'})
 
@@ -154,7 +154,7 @@ def updatereview(request, review_id):
         try: 
             form = ReviewForm(request.POST, instance=review) 
             form.save() 
-            return redirect('detail', review.movie.id) 
+            return redirect('detail', review.menu.id) 
         except ValueError: 
             return render(request, 'updatereview.html', {'review': review,'form':form,'error':'Bad data in form'})
 
@@ -162,4 +162,4 @@ def updatereview(request, review_id):
 def deletereview(request, review_id): 
     review = get_object_or_404(Review, pk=review_id, user=request.user) 
     review.delete() 
-    return redirect('detail', review.movie.id)
+    return redirect('detail', review.menu.id)

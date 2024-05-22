@@ -18,8 +18,8 @@ class Review(models.Model):
     date = models.DateTimeField(auto_now_add=True)  # the current datetime will be automatically filled in
     user = models.ForeignKey(User,on_delete=models.CASCADE) # a user can create multiple reviews
     menu = models.ForeignKey(Menu,on_delete=models.CASCADE) 
-    watchAgain = models.BooleanField() 
-    calificacion = models.IntegerField(default = 1, validators=[MaxValueValidator(100), MinValueValidator(1)])
+    favorito = models.BooleanField() 
+    calificacion = models.IntegerField(default = 1, validators=[MaxValueValidator(5), MinValueValidator(1)])
     
     def __str__(self): 
         return self.text
